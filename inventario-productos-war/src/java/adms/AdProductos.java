@@ -4,9 +4,11 @@
  */
 package adms;
 
+import java.io.Serializable;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
-import javax.enterprise.context.Dependent;
+import javax.enterprise.context.SessionScoped;
 import logicanegocio.LnProductos;
 import modelo.Productos;
 import modelo.Unidades;
@@ -16,8 +18,8 @@ import modelo.Unidades;
  * @author hack_
  */
 @Named(value = "adProductos")
-@Dependent
-public class AdProductos {
+@SessionScoped
+public class AdProductos implements Serializable{
 
     @EJB
     private LnProductos lnProductos;
@@ -51,6 +53,9 @@ public class AdProductos {
     public AdProductos() {
         producto=new Productos();
         unidad=new Unidades();
+    }
+    public List<Productos> getProductos(){
+        return lnProductos.findProductos();
     }
     
 }

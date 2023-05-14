@@ -6,7 +6,7 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import modelo.Productos;
 
-@Generated(value="EclipseLink-2.7.10.v20211216-rNA", date="2023-05-13T21:50:03")
+@Generated(value="EclipseLink-2.7.10.v20211216-rNA", date="2023-05-14T17:23:32")
 @StaticMetamodel(Unidades.class)
 public class Unidades_ { 
 
