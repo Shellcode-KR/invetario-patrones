@@ -22,6 +22,7 @@ import modelo.Venta;
 public class AdVenta implements Serializable {
     
     private boolean notacreada = false;
+
     private int idnota;
     
     private Venta venta;
@@ -29,6 +30,9 @@ public class AdVenta implements Serializable {
     @EJB
     private LnNotas lnNotas;
 
+    public boolean isNotacreada() {
+        return notacreada;
+    }
     public void crearNota(){
         if (!notacreada) {
             nota = new Notas();
@@ -36,6 +40,10 @@ public class AdVenta implements Serializable {
             lnNotas.addNota(nota);
         }
         
+    }
+    public Notas ultimanota(){
+        nota = lnNotas.ultimaNota();
+        return nota;
     }
     @EJB
     private LnVentas lnVentas;

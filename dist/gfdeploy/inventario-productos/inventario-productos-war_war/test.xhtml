@@ -10,6 +10,7 @@
         <f:view>
             <h:form>
                 <h:commandButton value="Crear nota" action="#{adVenta.crearNota()}"/>
+                <h:outputText rendered="#{adVenta.notacreada}" value="#{adVenta.ultimanota()}"/>
             </h:form>
         </f:view>
 

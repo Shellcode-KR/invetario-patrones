@@ -7,6 +7,8 @@ package accesodatos;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import modelo.Notas;
 
 /**
@@ -24,8 +26,15 @@ public class NotasFacade extends AbstractFacade<Notas> {
         return em;
     }
 
+    public Notas getUltimanota() {
+        TypedQuery<Notas> consulta = em.createQuery(
+                "SELECT n FROM Notas n WHERE n.id = (SELECT MAX(n2.id) FROM Notas n2)", Notas.class);
+        Notas ultimaNota = consulta.getSingleResult();
+        return ultimaNota;
+    }
+
     public NotasFacade() {
         super(Notas.class);
     }
-    
+
 }

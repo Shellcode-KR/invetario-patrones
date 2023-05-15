@@ -24,6 +24,9 @@ public class LnNotas {
     public void addNota(Notas n){
         notasFacade.create(n);
     }
+    public Notas ultimaNota(){
+        return notasFacade.getUltimanota();
+    }
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
 }
