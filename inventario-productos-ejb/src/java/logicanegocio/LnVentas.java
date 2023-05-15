@@ -8,6 +8,7 @@ import accesodatos.VentaFacade;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ejb.LocalBean;
+import modelo.Venta;
 
 /**
  *
@@ -19,7 +20,11 @@ public class LnVentas {
 
     @EJB
     private VentaFacade ventaFacade;
-
+    
+    
+    public void addVenta(Venta v){
+       ventaFacade.create(v);
+    }
     
     
     // Add business logic below. (Right-click in editor and choose

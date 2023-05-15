@@ -56,6 +56,7 @@ public class Notas implements Serializable {
     private List<Venta> ventaList;
 
     public Notas() {
+        this.fechaNota = new Date();
     }
 
     public Notas(Integer idnota) {

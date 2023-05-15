@@ -8,6 +8,7 @@ import accesodatos.NotasFacade;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ejb.LocalBean;
+import modelo.Notas;
 
 /**
  *
@@ -20,7 +21,9 @@ public class LnNotas {
     @EJB
     private NotasFacade notasFacade;
 
-    
+    public void addNota(Notas n){
+        notasFacade.create(n);
+    }
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
 }
