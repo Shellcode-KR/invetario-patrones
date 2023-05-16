@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        Anadiendo productos
+        
+        <f:view>
+
+
+            <h:form>
+                <h1><h:outputText value="Agregar Productos"/></h1>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Descripcion:" for="descripcion" />
+                    <h:inputText id="descripcion" value="#{adProductos.producto.descripcion}" title="Descripcion" />
+                    <h:outputLabel value="Existencia:" for="existencia" />
+                    <h:inputText id="existencia" value="#{adProductos.producto.existencia}" title="Existencia" />
+                    <h:outputLabel value="Precio:" for="precio" />
+                    <h:inputText id="precio" value="#{adProductos.producto.precio}" title="Precio" />
+                    <h:outputLabel value="FechaElab:" for="fechaElab" />
+                    <h:inputText id="fechaElab" value="#{adProductos.producto.fechaElab}" title="FechaElab" >
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="Unidad:" for="unidad" />
+                    <h:selectOneMenu id="unidad" value="#{adProductos.unidad.idunidad}" title="Unidad" >
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{adUnidades.unidades}" var="vunidad" itemLabel="#{vunidad.unidad}" itemValue="#{vunidad.idunidad}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandButton value="agregar" actionListener="#{adProductos.agregarProducto()}" />
+                                     --<!-- aqui va la llamada al metodo producto, ya le tome captura -->
+            </h:form>
+        </f:view>
+
+    </h:body>
+</html>

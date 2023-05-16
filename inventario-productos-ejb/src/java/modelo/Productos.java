@@ -147,13 +147,6 @@ public class Productos implements Serializable {
         return "modelo.Productos[ idproductos=" + idproductos + " ]";
     }
 
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
 
     @XmlTransient
     public Collection<Venta> getVentaCollection() {
@@ -162,6 +155,14 @@ public class Productos implements Serializable {
 
     public void setVentaCollection(Collection<Venta> ventaCollection) {
         this.ventaCollection = ventaCollection;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
     
     

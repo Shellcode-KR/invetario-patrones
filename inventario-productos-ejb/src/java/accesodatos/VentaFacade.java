@@ -9,6 +9,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import modelo.Notas;
 import modelo.Venta;
 
 /**
@@ -26,7 +27,7 @@ public class VentaFacade extends AbstractFacade<Venta> {
         return em;
     }
 
-    public List<Venta> findByFolioNota(Integer folioNota) {
+    public List<Venta> findByFolioNota(Notas folioNota) {
         TypedQuery<Venta> query = em.createQuery("SELECT v FROM Venta v WHERE v.folioNota = :folioNota", Venta.class);
         query.setParameter("folioNota", folioNota);
         return query.getResultList();

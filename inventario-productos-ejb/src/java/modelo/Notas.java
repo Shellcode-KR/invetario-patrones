@@ -38,9 +38,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Notas.findByImporte", query = "SELECT n FROM Notas n WHERE n.importe = :importe")})
 public class Notas implements Serializable {
 
-    @Size(max = 45)
     @Column(name = "numero_articulos_diferentes")
-    private String numeroArticulosDiferentes;
+    private Integer numeroArticulosDiferentes;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -80,13 +79,7 @@ public class Notas implements Serializable {
         this.fechaNota = fechaNota;
     }
 
-    public String getNumeroArticulosDiferentes() {
-        return numeroArticulosDiferentes;
-    }
-
-    public void setNumeroArticulosDiferentes(String numeroArticulosDiferentes) {
-        this.numeroArticulosDiferentes = numeroArticulosDiferentes;
-    }
+   
 
     public Integer getImporte() {
         return importe;
@@ -128,6 +121,14 @@ public class Notas implements Serializable {
     @Override
     public String toString() {
         return "modelo.Notas[ idnota=" + idnota + " ]";
+    }
+
+    public Integer getNumeroArticulosDiferentes() {
+        return numeroArticulosDiferentes;
+    }
+
+    public void setNumeroArticulosDiferentes(Integer numeroArticulosDiferentes) {
+        this.numeroArticulosDiferentes = numeroArticulosDiferentes;
     }
  
 }

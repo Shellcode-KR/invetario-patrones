@@ -31,6 +31,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Venta.findByCantidad", query = "SELECT v FROM Venta v WHERE v.cantidad = :cantidad")})
 public class Venta implements Serializable {
 
+    @Column(name = "importe")
+    private Integer importe;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -108,6 +111,14 @@ public class Venta implements Serializable {
     @Override
     public String toString() {
         return "modelo.Venta[ idventa=" + idventa + " ]";
+    }
+
+    public Integer getImporte() {
+        return importe;
+    }
+
+    public void setImporte(Integer importe) {
+        this.importe = importe;
     }
     
 }

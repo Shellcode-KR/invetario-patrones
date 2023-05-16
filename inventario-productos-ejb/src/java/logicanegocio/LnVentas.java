@@ -9,6 +9,7 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ejb.LocalBean;
+import modelo.Notas;
 import modelo.Venta;
 
 /**
@@ -22,7 +23,7 @@ public class LnVentas {
     @EJB
     private VentaFacade ventaFacade;
     
-    public List<Venta> findByFolioNota(Integer folioNota){
+    public List<Venta> findByFolioNota(Notas folioNota){
         return ventaFacade.findByFolioNota(folioNota);
     }
     

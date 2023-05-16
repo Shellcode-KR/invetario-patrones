@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Menu</title>
+    </h:head>
+    <h:body>
+        <f:view>
+            <h:form>
+
+                <h:outputText>Administracion del inventario</h:outputText>
+                <h:commandButton action="listarUnidades" value="Listar Unidades"/>
+                <br/>
+                <h:commandButton action="listarProductos" value="Listar Productos"/>
+                <br/>
+                <h:commandButton action="addProductos" value="Agregar Producto"/>
+                <br/>
+                <h:commandButton action="comprarProductos" value="Comprar Productos"/>
+                <br/>
+                <h:commandButton action="test" value="Pagina de test"/>
+            </h:form>
+        </f:view>
+
+    </h:body>
+</html>
