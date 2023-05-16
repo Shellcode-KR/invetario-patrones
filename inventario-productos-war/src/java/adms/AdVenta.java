@@ -33,13 +33,12 @@ public class AdVenta implements Serializable {
     public boolean isNotacreada() {
         return notacreada;
     }
+    //si la nota esta no esta, la crea
     public void crearNota(){
         if (!notacreada) {
-            nota = new Notas();
-            notacreada=true;
             lnNotas.addNota(nota);
+            notacreada=true;
         }
-        
     }
     public Notas ultimanota(){
         nota = lnNotas.ultimaNota();
@@ -67,12 +66,19 @@ public class AdVenta implements Serializable {
     }
     
     
-    
+    public void agregarVenta(){
+        crearNota();
+        ultimanota();
+        venta.setFolioNota(nota);
+        lnVentas.addVenta(venta);
+    }
     
     /**
      * Creates a new instance of AdVenta
      */
     public AdVenta() {
+        nota = new Notas();
+        venta = new Venta();
     }
     
 }

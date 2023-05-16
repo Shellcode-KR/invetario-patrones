@@ -47,6 +47,9 @@ public class Venta implements Serializable {
 
     public Venta() {
     }
+    public Venta(Notas folionota){
+        this.folioNota = folionota;
+    }
 
     public Venta(Integer idventa) {
         this.idventa = idventa;
