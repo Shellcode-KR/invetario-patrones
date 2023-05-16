@@ -14,9 +14,9 @@
                 <h1><h:outputText value="Comprar Productos"/></h1>
                 <h:panelGrid columns="2">
                     <h:outputLabel value="Producto:" for="idProducto" />
-                    <h:selectOneMenu id="idProducto" value="#{adVenta.venta.idProducto}" title="IdProducto" >
+                    <h:selectOneMenu id="idProducto" value="#{adVenta.producto.idproductos}" title="IdProducto" >
                         <!-- TODO: update below reference to list of available items-->
-                        <f:selectItems value="#{adProductos.productos}" var="vproducto" itemLabel="#{vproducto.descripcion}" itemValue="#{vproducto}"/>
+                        <f:selectItems value="#{adProductos.productos}" var="vproducto" itemLabel="#{vproducto.descripcion}" itemValue="#{vproducto.idproductos}"/>
                     </h:selectOneMenu>
                     <h:outputLabel value="Cantidad:" for="cantidad" />
                     <h:inputText id="cantidad" value="#{adVenta.venta.cantidad}" title="Cantidad" />

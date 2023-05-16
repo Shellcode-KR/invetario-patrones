@@ -12,6 +12,7 @@ import javax.ejb.EJB;
 import logicanegocio.LnNotas;
 import logicanegocio.LnVentas;
 import modelo.Notas;
+import modelo.Productos;
 import modelo.Venta;
 
 /**
@@ -28,6 +29,15 @@ public class AdVenta implements Serializable {
     
     private Venta venta;
     private Notas nota;
+    private Productos producto;
+
+    public Productos getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Productos producto) {
+        this.producto = producto;
+    }
     @EJB
     private LnNotas lnNotas;
 
@@ -72,6 +82,7 @@ public class AdVenta implements Serializable {
         crearNota();
         ultimanota();
         venta.setFolioNota(nota);
+        venta.setIdProducto(producto);
         lnVentas.addVenta(venta);
     }
     
