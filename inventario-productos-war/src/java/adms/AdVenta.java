@@ -10,6 +10,7 @@ import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
 import logicanegocio.LnNotas;
+import logicanegocio.LnProductos;
 import logicanegocio.LnVentas;
 import modelo.Notas;
 import modelo.Productos;
@@ -22,6 +23,9 @@ import modelo.Venta;
 @Named(value = "adVenta")
 @SessionScoped
 public class AdVenta implements Serializable {
+
+    @EJB
+    private LnProductos lnProductos;
     
     private boolean notacreada = false;
 
@@ -38,6 +42,7 @@ public class AdVenta implements Serializable {
     public void setProducto(Productos producto) {
         this.producto = producto;
     }
+    
     @EJB
     private LnNotas lnNotas;
 
@@ -82,6 +87,9 @@ public class AdVenta implements Serializable {
         crearNota();
         ultimanota();
         venta.setFolioNota(nota);
+        producto = lnProductos.findProducto(producto.getIdproductos());
+        int aux =  (int) (producto.getPrecio()*venta.getCantidad());
+        venta.setImporte(aux);
         venta.setIdProducto(producto);
         lnVentas.addVenta(venta);
     }

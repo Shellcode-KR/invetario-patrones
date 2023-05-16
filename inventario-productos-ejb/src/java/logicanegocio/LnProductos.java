@@ -28,5 +28,8 @@ public class LnProductos {
     public void  addProducto(Productos p){
         productosFacade.create(p);
     }
+    public Productos findProducto(int idProducto){
+        return productosFacade.find(idProducto);
+    }
     
 }
