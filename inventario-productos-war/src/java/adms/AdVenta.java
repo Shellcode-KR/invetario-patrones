@@ -83,8 +83,6 @@ public class AdVenta implements Serializable {
         ultimanota();
         venta.setFolioNota(nota);
         venta.setIdProducto(producto);
-        int aux = (int) (venta.getCantidad()*producto.getPrecio());
-        venta.setImporte(aux);
         lnVentas.addVenta(venta);
     }
     
