@@ -26,7 +26,7 @@ public class VentaFacade extends AbstractFacade<Venta> {
         return em;
     }
 
-    public List<Venta> findByFolioNota(String folioNota) {
+    public List<Venta> findByFolioNota(Integer folioNota) {
         TypedQuery<Venta> query = em.createQuery("SELECT v FROM Venta v WHERE v.folioNota = :folioNota", Venta.class);
         query.setParameter("folioNota", folioNota);
         return query.getResultList();

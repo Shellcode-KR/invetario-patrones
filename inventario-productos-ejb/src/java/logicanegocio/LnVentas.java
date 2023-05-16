@@ -22,7 +22,7 @@ public class LnVentas {
     @EJB
     private VentaFacade ventaFacade;
     
-    public List<Venta> findByFolioNota(String folioNota){
+    public List<Venta> findByFolioNota(Integer folioNota){
         return ventaFacade.findByFolioNota(folioNota);
     }
     

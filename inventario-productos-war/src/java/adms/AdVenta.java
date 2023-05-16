@@ -87,7 +87,7 @@ public class AdVenta implements Serializable {
     }
     
     public List<Venta> getProductosNota(){
-        return lnVentas.findByFolioNota(nota.getIdnota()+"");
+        return lnVentas.findByFolioNota(nota.getIdnota());
     }
     /**
      * Creates a new instance of AdVenta
