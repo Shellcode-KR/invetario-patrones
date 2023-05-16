@@ -13,28 +13,52 @@
             <h:form>
                 <h1><h:outputText value="Comprar Productos"/></h1>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="Idventa:" for="idventa" />
-                    <h:inputText id="idventa" value="#{adVenta.venta.idventa}" title="Idventa" required="true" requiredMessage="The Idventa field is required."/>
-                    <h:outputLabel value="FolioNota:" for="folioNota" />
-                    <h:selectOneMenu id="folioNota" value="#{adVenta.venta.folioNota}" title="FolioNota" >
-                        <!-- TODO: update below reference to list of available items-->
-                        <f:selectItems value="#{fixme}"/>
-                    </h:selectOneMenu>
-                    
-                    
-                    <h:outputLabel value="IdProducto:" for="idProducto" />
+                    <h:outputLabel value="Producto:" for="idProducto" />
                     <h:selectOneMenu id="idProducto" value="#{adVenta.venta.idProducto}" title="IdProducto" >
                         <!-- TODO: update below reference to list of available items-->
-                        <f:selectItems value="#{fixme}"/>
+                        <f:selectItems value="#{adProductos.productos}" var="vproducto" itemLabel="#{vproducto.descripcion}" itemValue="#{vproducto}"/>
                     </h:selectOneMenu>
                     <h:outputLabel value="Cantidad:" for="cantidad" />
                     <h:inputText id="cantidad" value="#{adVenta.venta.cantidad}" title="Cantidad" />
-                    
-                    
                 </h:panelGrid>
                 <h:commandButton value="Agregar a la nota" actionListener="#{adVenta.agregarVenta()}" />
             </h:form>
         </f:view>
+        <f:view>
+
+
+            <h:form rendered="#{adVenta.notacreada}">
+                <h1><h:outputText value="Lista de Productos"/></h1>
+                <h1><h:outputText value="Nota: #{adVenta.nota.idnota}"/></h1>
+                <h:dataTable value="#{adVenta.productosNota}" var="item">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Idventa"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idventa}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Cantidad"/>
+                        </f:facet>
+                        <h:outputText value="#{item.cantidad}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="FolioNota"/>
+                        </f:facet>
+                        <h:outputText value="#{item.folioNota}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="IdProducto"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idProducto}"/>
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+        </f:view>
+
 
     </h:body>
 </html>

@@ -4,9 +4,11 @@
  */
 package accesodatos;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import modelo.Venta;
 
 /**
@@ -24,8 +26,14 @@ public class VentaFacade extends AbstractFacade<Venta> {
         return em;
     }
 
+    public List<Venta> findByFolioNota(String folioNota) {
+        TypedQuery<Venta> query = em.createQuery("SELECT v FROM Venta v WHERE v.folioNota = :folioNota", Venta.class);
+        query.setParameter("folioNota", folioNota);
+        return query.getResultList();
+    }
+
     public VentaFacade() {
         super(Venta.class);
     }
-    
+
 }

@@ -24,7 +24,41 @@
                 <h:commandButton value="Agregar a la nota" actionListener="#{adVenta.agregarVenta()}" />
             </h:form>
         </f:view>
-        
+        <f:view>
+
+
+            <h:form rendered="#{adVenta.notacreada}">
+                <h1><h:outputText value="Lista de Productos"/></h1>
+                <h1><h:outputText value="Nota: #{adVenta.nota.idnota}"/></h1>
+                <h:dataTable value="#{adVenta.productosNota}" var="item">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Idventa"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idventa}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Cantidad"/>
+                        </f:facet>
+                        <h:outputText value="#{item.cantidad}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="FolioNota"/>
+                        </f:facet>
+                        <h:outputText value="#{item.folioNota}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="IdProducto"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idProducto}"/>
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+        </f:view>
+
 
     </h:body>
 </html>

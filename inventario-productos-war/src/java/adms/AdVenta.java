@@ -7,6 +7,7 @@ package adms;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.List;
 import javax.ejb.EJB;
 import logicanegocio.LnNotas;
 import logicanegocio.LnVentas;
@@ -44,6 +45,7 @@ public class AdVenta implements Serializable {
         nota = lnNotas.ultimaNota();
         return nota;
     }
+    
     @EJB
     private LnVentas lnVentas;
     
@@ -73,6 +75,9 @@ public class AdVenta implements Serializable {
         lnVentas.addVenta(venta);
     }
     
+    public List<Venta> getProductosNota(){
+        return lnVentas.findByFolioNota(nota.getIdnota()+"");
+    }
     /**
      * Creates a new instance of AdVenta
      */

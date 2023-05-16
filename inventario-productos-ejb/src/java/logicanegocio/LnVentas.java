@@ -5,6 +5,7 @@
 package logicanegocio;
 
 import accesodatos.VentaFacade;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ejb.LocalBean;
@@ -21,6 +22,9 @@ public class LnVentas {
     @EJB
     private VentaFacade ventaFacade;
     
+    public List<Venta> findByFolioNota(String folioNota){
+        return ventaFacade.findByFolioNota(folioNota);
+    }
     
     public void addVenta(Venta v){
        ventaFacade.create(v);
