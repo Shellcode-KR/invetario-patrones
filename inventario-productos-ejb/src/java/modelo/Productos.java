@@ -5,6 +5,7 @@
 package modelo;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -16,11 +17,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -38,15 +41,18 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Productos.findByFechaElab", query = "SELECT p FROM Productos p WHERE p.fechaElab = :fechaElab")})
 public class Productos implements Serializable {
 
+    @Size(max = 30)
+    @Column(name = "descripcion")
+    private String descripcion;
+    @OneToMany(mappedBy = "idProducto")
+    private Collection<Venta> ventaCollection;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "idproductos")
     private Integer idproductos;
-    @Size(max = 30)
-    @Column(name = "descripcion")
-    private String descripcion;
     @Column(name = "existencia")
     private Integer existencia;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
@@ -83,13 +89,6 @@ public class Productos implements Serializable {
         this.idproductos = idproductos;
     }
 
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
 
     public Integer getExistencia() {
         return existencia;
@@ -146,6 +145,23 @@ public class Productos implements Serializable {
     @Override
     public String toString() {
         return "modelo.Productos[ idproductos=" + idproductos + " ]";
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    @XmlTransient
+    public Collection<Venta> getVentaCollection() {
+        return ventaCollection;
+    }
+
+    public void setVentaCollection(Collection<Venta> ventaCollection) {
+        this.ventaCollection = ventaCollection;
     }
     
     

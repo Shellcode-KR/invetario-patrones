@@ -33,15 +33,16 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Unidades.findByUnidad", query = "SELECT u FROM Unidades u WHERE u.unidad = :unidad")})
 public class Unidades implements Serializable {
 
+    @Size(max = 20)
+    @Column(name = "unidad")
+    private String unidad;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "idunidad")
     private Integer idunidad;
-    @Size(max = 20)
-    @Column(name = "unidad")
-    private String unidad;
     @OneToMany(mappedBy = "unidad")
     private List<Productos> productosList;
 
@@ -60,13 +61,6 @@ public class Unidades implements Serializable {
         this.idunidad = idunidad;
     }
 
-    public String getUnidad() {
-        return unidad;
-    }
-
-    public void setUnidad(String unidad) {
-        this.unidad = unidad;
-    }
 
     @XmlTransient
     public List<Productos> getProductosList() {
@@ -100,6 +94,14 @@ public class Unidades implements Serializable {
     @Override
     public String toString() {
         return "modelo.Unidades[ idunidad=" + idunidad + " ]";
+    }
+
+    public String getUnidad() {
+        return unidad;
+    }
+
+    public void setUnidad(String unidad) {
+        this.unidad = unidad;
     }
     
 }

@@ -95,6 +95,7 @@ public class AdVenta implements Serializable {
     public AdVenta() {
         nota = new Notas();
         venta = new Venta();
+        producto = new Productos();
     }
     
 }

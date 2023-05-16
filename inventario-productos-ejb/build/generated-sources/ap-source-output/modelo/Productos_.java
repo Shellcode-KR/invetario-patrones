@@ -2,11 +2,13 @@ package modelo;
 
 import java.util.Date;
 import javax.annotation.Generated;
+import javax.persistence.metamodel.CollectionAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import modelo.Unidades;
+import modelo.Venta;
 
-@Generated(value="EclipseLink-2.7.10.v20211216-rNA", date="2023-05-15T22:59:25")
+@Generated(value="EclipseLink-2.7.10.v20211216-rNA", date="2023-05-16T00:09:45")
 @StaticMetamodel(Productos.class)
 public class Productos_ { 
 
@@ -15,6 +17,7 @@ public class Productos_ {
     public static volatile SingularAttribute<Productos, Unidades> unidad;
     public static volatile SingularAttribute<Productos, Double> precio;
     public static volatile SingularAttribute<Productos, Integer> idproductos;
+    public static volatile CollectionAttribute<Productos, Venta> ventaCollection;
     public static volatile SingularAttribute<Productos, Date> fechaElab;
 
 }
