@@ -5,6 +5,7 @@
 package logicanegocio;
 
 import accesodatos.NotasFacade;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ejb.LocalBean;
@@ -26,6 +27,9 @@ public class LnNotas {
     }
     public Notas ultimaNota(){
         return notasFacade.getUltimanota();
+    }
+    public List<Notas> findNotas(){
+        return notasFacade.findAll();
     }
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")

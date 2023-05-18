@@ -19,7 +19,7 @@
                         <f:selectItems value="#{adProductos.productos}" var="vproducto" itemLabel="#{vproducto.descripcion}" itemValue="#{vproducto.idproductos}"/>
                     </h:selectOneMenu>
                     <h:outputLabel value="Cantidad:" for="cantidad" />
-                    <h:inputText id="cantidad" value="#{adVenta.venta.cantidad}" title="Cantidad" />
+                    <h:inputText  required="true" id="cantidad" value="#{adVenta.venta.cantidad}" title="Cantidad"  ><f:validateLongRange minimum="1" /></h:inputText>
                 </h:panelGrid>
                 <h:commandButton value="Agregar a la nota" actionListener="#{adVenta.agregarVenta()}" />
             </h:form>
@@ -30,7 +30,7 @@
             <h:form rendered="#{adVenta.notacreada}">
                 <h1><h:outputText value="Lista de Productos"/></h1>
                 <h1><h:outputText value="Nota: #{adVenta.nota.idnota}"/></h1>
-                <h:dataTable value="#{adVenta.productosNota}" var="item">
+                <h:dataTable value="#{adVenta.carrito}" var="item">
                     <h:column>
                         <f:facet name="header">
                             <h:outputText value="Producto"/>
@@ -55,10 +55,28 @@
                         </f:facet>
                         <h:outputText value="$ #{item.importe}"/>
                     </h:column>
-                    
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Borrar"/>
+                        </f:facet>
+                        <h:commandButton value="Borrar" actionListener="#{adVenta.eliminarVenta(item)}" />
+                    </h:column>
                 </h:dataTable>
             </h:form>
         </f:view>
+        <f:view>
+            <h:form>
+                <h2>Total a pagar $ #{adVenta.calcularTotal()}</h2> 
+                <h:commandButton value="Comprar" actionListener="#{adVenta.comprar()}" />
+            </h:form>
+        </f:view>
+        <f:view>
+            <h:form>
+                <h:commandButton value="Menu" action="index"/>
+            </h:form>
+        </f:view>
+
+
 
 
     </h:body>
