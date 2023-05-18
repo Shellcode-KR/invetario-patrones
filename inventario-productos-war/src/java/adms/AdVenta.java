@@ -102,6 +102,7 @@ public class AdVenta implements Serializable {
         //lnVentas.addVenta(venta);
         carrito.add(venta);
         venta = new Venta();
+        producto= new Productos();
 
     }
 
@@ -128,15 +129,26 @@ public class AdVenta implements Serializable {
         calcularTotales();
         for (Venta ventafinal : carrito) {
             lnVentas.addVenta(ventafinal);
-            producto = lnProductos.findProducto(ventafinal.getIdProducto().getIdproductos());  // Obtener el producto de la base de datos
-            int nExistencia = producto.getExistencia() - ventafinal.getCantidad();
-            producto.setExistencia(nExistencia);
-            lnProductos.updateProducto(producto);
+            Productos auxp=new Productos();
+            
+            auxp = lnProductos.findProducto(ventafinal.getIdProducto().getIdproductos());  // Obtener el producto de la base de datos
+            //producto= ventafinal.getIdProducto();
+            
+            int nExistencia = auxp.getExistencia() - ventafinal.getCantidad();
+            auxp.setExistencia(nExistencia);
+            lnProductos.updateProducto(auxp);
+            
+            nExistencia=0;
+            auxp=new Productos();
         }
 
         carrito = new ArrayList<>();
     }
 
+    public void actualizarexistenciasProducto(){
+        
+    
+    }
     public List<Venta> getProductosNota() {
         return lnVentas.findByFolioNota(nota);
     }

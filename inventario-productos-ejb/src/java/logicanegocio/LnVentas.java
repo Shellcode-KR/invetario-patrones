@@ -30,7 +30,9 @@ public class LnVentas {
     public void addVenta(Venta v){
        ventaFacade.create(v);
     }
-    
+    public List<Venta> findVentas(){
+        return ventaFacade.findAll();
+    }
     
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")

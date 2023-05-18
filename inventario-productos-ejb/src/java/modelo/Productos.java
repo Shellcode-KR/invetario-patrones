@@ -7,6 +7,7 @@ package modelo;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
+import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -128,23 +129,32 @@ public class Productos implements Serializable {
         hash += (idproductos != null ? idproductos.hashCode() : 0);
         return hash;
     }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Productos)) {
-            return false;
-        }
-        Productos other = (Productos) object;
-        if ((this.idproductos == null && other.idproductos != null) || (this.idproductos != null && !this.idproductos.equals(other.idproductos))) {
-            return false;
-        }
-        return true;
-    }
+    
 
     @Override
     public String toString() {
         return "modelo.Productos[ idproductos=" + idproductos + " ]";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Productos other = (Productos) obj;
+        if (!Objects.equals(this.descripcion, other.descripcion)) {
+            return false;
+        }
+        if (!Objects.equals(this.idproductos, other.idproductos)) {
+            return false;
+        }
+        return Objects.equals(this.existencia, other.existencia);
     }
 
 

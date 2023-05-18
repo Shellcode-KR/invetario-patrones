@@ -66,6 +66,7 @@
         </f:view>
         <f:view>
             <h:form>
+                <h2>#{adVenta.carrito}</h2>
                 <h2>Total a pagar $ #{adVenta.calcularTotal()}</h2> 
                 <h:commandButton value="Comprar" actionListener="#{adVenta.comprar()}" />
             </h:form>

@@ -31,5 +31,8 @@ public class LnProductos {
     public Productos findProducto(int idProducto){
         return productosFacade.find(idProducto);
     }
+    public void updateProducto(Productos p){
+        productosFacade.edit(p);
+    }
     
 }

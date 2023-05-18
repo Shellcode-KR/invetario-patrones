@@ -31,6 +31,10 @@ public class LnNotas {
     public List<Notas> findNotas(){
         return notasFacade.findAll();
     }
+    public void updateNota(Notas n){
+        notasFacade.edit(n);
+    }
+    
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
 }
