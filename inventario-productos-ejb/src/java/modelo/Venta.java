@@ -5,6 +5,7 @@
 package modelo;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -96,22 +97,34 @@ public class Venta implements Serializable {
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Venta)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        Venta other = (Venta) object;
-        if ((this.idventa == null && other.idventa != null) || (this.idventa != null && !this.idventa.equals(other.idventa))) {
+        if (getClass() != obj.getClass()) {
             return false;
         }
-        return true;
+        final Venta other = (Venta) obj;
+        if (!Objects.equals(this.idventa, other.idventa)) {
+            return false;
+        }
+        if (!Objects.equals(this.cantidad, other.cantidad)) {
+            return false;
+        }
+        return Objects.equals(this.idProducto, other.idProducto);
     }
+
+   
 
     @Override
     public String toString() {
-        return "modelo.Venta[ idventa=" + idventa + " ]";
+        return "Venta{" + "importe=" + importe + ", idventa=" + idventa + ", cantidad=" + cantidad + ", folioNota=" + folioNota + ", idProducto=" + idProducto + '}';
     }
+
+    
 
     public Integer getImporte() {
         return importe;

@@ -134,7 +134,7 @@ public class AdVenta implements Serializable {
             auxp = lnProductos.findProducto(ventafinal.getIdProducto().getIdproductos());  // Obtener el producto de la base de datos
             //producto= ventafinal.getIdProducto();
             
-            int nExistencia = auxp.getExistencia() - ventafinal.getCantidad();
+            Integer nExistencia = auxp.getExistencia() - ventafinal.getCantidad();
             auxp.setExistencia(nExistencia);
             lnProductos.updateProducto(auxp);
             
