@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <f:view>
+
+
+            <h:form>
+                <h1><h:outputText value="Actualizar Producto"/></h1>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Producto" for="idProducto" />
+                    <br/>
+                    <h:selectOneMenu id="idProducto" value="#{adProductos.producto.idproductos}" title="IdProducto" >
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{adProductos.productos}" var="vproducto" itemLabel="#{vproducto.descripcion}" itemValue="#{vproducto.idproductos}"/>
+                    </h:selectOneMenu>
+                    <br/>
+                    <h:outputLabel value="Existencia:" for="existencia" />
+                    <br/>
+                    <h:inputText id="existencia" value="#{adProductos.producto.existencia}" title="Existencia" />
+                    <br/>
+                    
+                    
+                </h:panelGrid>
+                <h:commandButton value="Actualizar Producto" actionListener="#{adProductos.actualizarProducto()}" />
+                <h:outputText rendered="#{adProductos.actualizado}" value="Se actualizo correctamente"/>
+            </h:form>
+        </f:view>
+
+    </h:body>
+</html>

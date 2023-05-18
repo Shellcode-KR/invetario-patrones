@@ -23,7 +23,16 @@ public class AdProductos implements Serializable{
 
     @EJB
     private LnProductos lnProductos;
+    private boolean actualizado=false;
 
+    public boolean isActualizado() {
+        return actualizado;
+    }
+
+    public void setActualizado(boolean actualizado) {
+        this.actualizado = actualizado;
+    }
+    
     private Productos producto;
     private Unidades unidad;
 
@@ -47,6 +56,16 @@ public class AdProductos implements Serializable{
         producto.setUnidad(unidad);
         lnProductos.addProducto(producto);
     }
+    public void actualizarProducto(){
+        int existencias = producto.getExistencia();
+        //Double precio = producto.getPrecio();
+        producto = lnProductos.findProducto(producto.getIdproductos());
+        producto.setExistencia(existencias);
+        //producto.setPrecio(precio);
+        lnProductos.updateProducto(producto);
+        actualizado=true;
+    }
+    
     /**
      * Creates a new instance of AdProductos
      */
