@@ -32,8 +32,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Venta.findByCantidad", query = "SELECT v FROM Venta v WHERE v.cantidad = :cantidad")})
 public class Venta implements Serializable {
 
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "importe")
-    private Integer importe;
+    private Double importe;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -126,11 +127,11 @@ public class Venta implements Serializable {
 
     
 
-    public Integer getImporte() {
+    public Double getImporte() {
         return importe;
     }
 
-    public void setImporte(Integer importe) {
+    public void setImporte(Double importe) {
         this.importe = importe;
     }
     

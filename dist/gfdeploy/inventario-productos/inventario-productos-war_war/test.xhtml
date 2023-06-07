@@ -9,8 +9,9 @@
     <h:body>
         <f:view>
             <h:form>
-                <h:commandButton value="Crear nota" action="#{adVenta.crearNota()}"/>
-                <h:outputText rendered="#{adVenta.notacreada}" value="#{adVenta.ultimanota()}"/>
+                <h:outputText value="Dias de producto" />
+                <h:inputText value="#{adProductos.numerodias}" />
+                <h:commandButton  value="Aceptar"/>
             </h:form>
         </f:view>
 

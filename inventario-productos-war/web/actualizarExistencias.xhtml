@@ -22,7 +22,9 @@
                     <br/>
                     <h:outputLabel value="Existencia:" for="existencia" />
                     <br/>
-                    <h:inputText id="existencia" value="#{adProductos.producto.existencia}" title="Existencia" />
+                    <h:inputText rendered="true" id="existencia" value="#{adProductos.producto.existencia}" title="Existencia" >
+                        <f:validateLongRange minimum="1" />
+                    </h:inputText>
                     <br/>
                     
                     

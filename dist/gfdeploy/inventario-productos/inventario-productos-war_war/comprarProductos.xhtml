@@ -16,10 +16,12 @@
                     <h:outputLabel value="Producto:" for="idProducto" />
                     <h:selectOneMenu id="idProducto" value="#{adVenta.producto.idproductos}" title="IdProducto" >
                         <!-- TODO: update below reference to list of available items-->
-                        <f:selectItems value="#{adProductos.productos}" var="vproducto" itemLabel="#{vproducto.descripcion}" itemValue="#{vproducto.idproductos}"/>
+                        <f:selectItems value="#{adProductos.productosConFechaElabNoMayor}" var="vproducto" itemLabel="#{vproducto.descripcion}" itemValue="#{vproducto.idproductos}"/>
                     </h:selectOneMenu>
                     <h:outputLabel value="Cantidad:" for="cantidad" />
-                    <h:inputText  required="true" id="cantidad" value="#{adVenta.venta.cantidad}" title="Cantidad"  ><f:validateLongRange minimum="1" /></h:inputText>
+                    <h:inputText  required="true" id="cantidad" value="#{adVenta.venta.cantidad}" title="Cantidad"  >
+                        <f:validateLongRange minimum="1" />
+                    </h:inputText>
                 </h:panelGrid>
                 <h:commandButton value="Agregar a la nota" actionListener="#{adVenta.agregarVenta()}" />
             </h:form>
@@ -41,7 +43,9 @@
                         <f:facet name="header">
                             <h:outputText value="Precio"/>
                         </f:facet>
-                        <h:outputText value="#{item.idProducto.precio}"/>
+                        <h:outputText value="#{item.idProducto.precio}">
+                            <f:convertNumber type="currency" currencySymbol="$" locale="es-MX"/>
+                        </h:outputText>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
@@ -53,7 +57,9 @@
                         <f:facet name="header">
                             <h:outputText value="Importe"/>
                         </f:facet>
-                        <h:outputText value="$ #{item.importe}"/>
+                        <h:outputText value="#{item.importe}">
+                            <f:convertNumber type="currency" currencySymbol="$" locale="es-MX"/>
+                        </h:outputText>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
@@ -66,7 +72,11 @@
         </f:view>
         <f:view>
             <h:form>
-                <h2>Total a pagar $ #{adVenta.calcularTotal()}</h2> 
+                <h2>Total a pagar: 
+                    <h:outputText value="#{adVenta.calcularTotal()}">
+                    <f:convertNumber type="currency" currencySymbol="$" locale="es-MX"/>
+                    </h:outputText>
+                </h2>
                 <h:commandButton value="Comprar" actionListener="#{adVenta.comprar()}" />
             </h:form>
         </f:view>

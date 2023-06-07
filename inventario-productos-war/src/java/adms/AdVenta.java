@@ -90,19 +90,47 @@ public class AdVenta implements Serializable {
         this.venta = venta;
     }
 
+    public boolean estaProducto() {
+        for (Venta venta1 : carrito) {
+            if (venta1.getIdProducto().getIdproductos().equals(producto.getIdproductos())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Venta getProductoCarrito() {
+        Venta vv = new Venta();
+        for (Venta v : carrito) {
+            if (v.getIdProducto().getIdproductos().equals(producto.getIdproductos())) {
+                vv = v;
+            }
+        }
+        return vv;
+    }
+
     public void agregarVenta() {
         crearNota();
         ultimanota();
         venta.setFolioNota(nota);
         producto = lnProductos.findProducto(producto.getIdproductos());
-        int aux = (int) (producto.getPrecio() * venta.getCantidad());
-        venta.setImporte(aux);
-        venta.setIdProducto(producto);
 
-        //lnVentas.addVenta(venta);
-        carrito.add(venta);
+        if (estaProducto()) {
+            Venta v = getProductoCarrito();
+            v.setCantidad(v.getCantidad() + venta.getCantidad());
+            v.setImporte(producto.getPrecio() * v.getCantidad());
+        } else {
+            double aux = (producto.getPrecio() * venta.getCantidad());
+            venta.setImporte(aux);
+            venta.setIdProducto(producto);
+
+            //lnVentas.addVenta(venta);
+            carrito.add(venta);
+
+        }
+
         venta = new Venta();
-        producto= new Productos();
+        producto = new Productos();
 
     }
 
@@ -129,26 +157,26 @@ public class AdVenta implements Serializable {
         calcularTotales();
         for (Venta ventafinal : carrito) {
             lnVentas.addVenta(ventafinal);
-            Productos auxp=new Productos();
-            
+            Productos auxp = new Productos();
+
             auxp = lnProductos.findProducto(ventafinal.getIdProducto().getIdproductos());  // Obtener el producto de la base de datos
             //producto= ventafinal.getIdProducto();
-            
+
             Integer nExistencia = auxp.getExistencia() - ventafinal.getCantidad();
             auxp.setExistencia(nExistencia);
             lnProductos.updateProducto(auxp);
-            
-            nExistencia=0;
-            auxp=new Productos();
+
+            nExistencia = 0;
+            auxp = new Productos();
         }
 
         carrito = new ArrayList<>();
     }
 
-    public void actualizarexistenciasProducto(){
-        
-    
+    public void actualizarexistenciasProducto() {
+
     }
+
     public List<Venta> getProductosNota() {
         return lnVentas.findByFolioNota(nota);
     }

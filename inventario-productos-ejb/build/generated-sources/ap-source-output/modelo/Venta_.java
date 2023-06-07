@@ -6,7 +6,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 import modelo.Notas;
 import modelo.Productos;
 
-@Generated(value="EclipseLink-2.7.10.v20211216-rNA", date="2023-05-18T12:19:45")
+@Generated(value="EclipseLink-2.7.10.v20211216-rNA", date="2023-06-06T10:25:27")
 @StaticMetamodel(Venta.class)
 public class Venta_ { 
 
@@ -14,6 +14,6 @@ public class Venta_ {
     public static volatile SingularAttribute<Venta, Notas> folioNota;
     public static volatile SingularAttribute<Venta, Integer> cantidad;
     public static volatile SingularAttribute<Venta, Productos> idProducto;
-    public static volatile SingularAttribute<Venta, Integer> importe;
+    public static volatile SingularAttribute<Venta, Double> importe;
 
 }

@@ -37,14 +37,17 @@
                         <f:facet name="header">
                             <h:outputText value="Precio"/>
                         </f:facet>
-                        <h:outputText value="#{item.precio}"/>
+                        <h:outputText value="#{item.precio}">
+                            <f:convertNumber type="currency" currencySymbol="$" locale="es-MX"/>
+                        </h:outputText>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
                             <h:outputText value="FechaElab"/>
                         </f:facet>
                         <h:outputText value="#{item.fechaElab}">
-                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                            <f:convertDateTime pattern="dd MMM, yyyy" dateStyle="medium"
+                                               locale="es-MX"/>
                         </h:outputText>
                     </h:column>
                     <h:column>

@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <f:view>
+
+
+            <h:form>
+                <h1><h:outputText value="Agregar Cliente"/></h1>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Nombre:" for="nombreCl" />
+                    <h:inputText required="true" requiredMessage="Introduce un nombre" validatorMessage="No se admiten numeros, tampoco puros espacios" id="nombreCl" value="#{adClientes.cliente.nombreCl}" title="NombreCl" >
+                        <f:validator validatorId="espaciosEnBlancoValidator"/>
+                        <f:validateRegex  pattern="[a-zA-ZñÑáÁÉéÍíÓóÚú\s]{3,30}"  />
+                    </h:inputText>
+                    <h:outputLabel value="Apellido Paterno:" for="apellidoPa" />
+                    <h:inputText required="true" requiredMessage="Introduce tu apellido paterno" validatorMessage="No se admiten numeros, tampoco puros espacios" id="apellidoPa" value="#{adClientes.apellidoPaterno}" title="ApellidoPa" />
+                    <h:outputLabel value="Apellido Materno:" for="apellidoMa" />
+                    <h:inputText required="true" requiredMessage="Introduce tu apellido paterno" validatorMessage="No se admiten numeros, tampoco puros espacios" required="true" id="apellidoMa" value="#{adClientes.apellidoMaterno}" title="ApellidoMa" />
+                    <h:outputLabel value="Rfc:" for="rfc" />
+                    <h:inputText required="true" id="rfc" value="#{adClientes.cliente.rfc}" title="Rfc" />
+                    <h:outputLabel value="Email:" for="email" />
+                    <h:inputText required="true" id="email" value="#{adClientes.cliente.email}" title="Email" />
+                    <h:outputLabel value="Telefono:" for="telefono" />
+                    <h:inputText required="true" id="telefono" value="#{adClientes.cliente.telefono}" title="Telefono" />
+                </h:panelGrid>
+            </h:form>
+        </f:view>
+
+    </h:body>
+</html>
